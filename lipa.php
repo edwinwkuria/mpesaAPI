@@ -22,9 +22,9 @@
 $lipa_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 
 $BusinessShortCode = '174379';
-$Timestamp = date('YmdGis');
+$Timestamp = date('YmdHis');
 $PartyA = '254715081317';
-$CallBackURL = 'https://silent-warthog-14.localtunnel.me/mpesaAPI/lipacallback.php';
+$CallBackURL = 'https://strange-eel-45.localtunnel.me/mpesaAPI/lipacallback.php';
 $AccountReference = 'ZOO/2019';
 $TransactionDesc = 'Cart Payment';
 $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
@@ -33,7 +33,8 @@ $Amount = '2';
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $lipa_url);
-curl_setopt($curl, CURLOPT_HTTPHEADER,['Content-Type:application/json','Authorization:Bearer pgjqtpB9uGlbW9QtWBAA8zGwpCR8']); //setting custom header
+$lipa_header =['Content-Type:application/json','Authorization:Bearer '.$accesstoken];
+curl_setopt($curl, CURLOPT_HTTPHEADER,$lipa_header); //setting custom header
 
 
 $curl_post_data = array(
@@ -61,4 +62,5 @@ $curl_response = curl_exec($curl);
 print_r($curl_response);
 
 echo $curl_response;
+echo $Timestamp;
 ?>
